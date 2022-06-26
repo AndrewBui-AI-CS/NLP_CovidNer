@@ -1,0 +1,5 @@
+ner
+__pycache__
+model
+data
+phobert-base

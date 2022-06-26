@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block content %}
+
+<h2 class="text-warning mt-3 text-center">Result of entity recognition</h2>
+<hr />
+
+{% for result in json_results %}
+<div class="text-center">
+  <!-- <img
+    src="data:image/jpeg;charset=utf-8;base64,{{ img_base64 }}"
+    id="result_image"
+    width="800"
+    height="480"
+  /> -->
+  <p>{{result.first_text}}</p>
+  <p>{{result.result}}</p>
+</div>
+
+<hr />
+{% endfor %}
+<!-- 
+<script>
+  function download(filename, text) {
+    var element = document.createElement("a");
+    element.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+    );
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+</script> -->
+
+{% endblock %}

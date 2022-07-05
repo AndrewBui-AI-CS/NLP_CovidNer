@@ -1,2 +1,3 @@
 ner
 __pycache__
+*.pt

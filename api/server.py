@@ -24,6 +24,13 @@ def home(request: Request):
         "request": request,
         "model_selection_options": model_selection_options,
     })
+    
+    
+def format_result(string):
+    split_string = string.split(') (')[1: -1]
+    format_string = ' '.join(list(map(lambda x: x.replace(', ', '-').replace("'", ''), split_string)))
+    # return list(map(lambda x: list(map(lambda y: str(y).replace("'", ''), x.split(', '))), split_string))
+    return format_string
 
 
 @app.post("/")
@@ -32,17 +39,23 @@ async def detect_via_web_form(request: Request,
                               model_name: str = Form(...),
                               ):
 
-    f = open("data/first_text.txt", "w")
-    f.write(textupload)
-    f.close()
+    # f = open("data/first_text.txt", "w", encoding='utf-8')
+    # # print(type(textupload))
+    # f.write(textupload.encode('utf-8').decode())
+    # f.close()
+    
     # rc = subprocess.call(
     #     ["/home/hoang/Desktop/NLP-Ner/api/call_helper.sh", textupload], shell=True)
     # print("Text up load: ", textupload)
     os.system(f'bash /home/hoang/Desktop/NLP-Ner/api/call_helper.sh \"{textupload}\"')
-    first_text = open("data/first_text.txt", "r")
+    first_text = open("data/first_text.txt", "r", encoding='utf-8')
+    # first_text = textupload
     final_result = open("data/final_result.txt", "r")
-    result = [{"first_text": first_text.readlines(
-    ), "result": final_result.readlines()}]
+    result = [{"first_text": first_text.read(), 
+               "result": final_result.readlines()}]
+    
+    for i in range(len(result[0]['result'])):
+        result[0]['result'][i] = format_result(result[0]['result'][i])
     if model_name == 'bert-based':
         return templates.TemplateResponse('show_results.html', {
             'request': request,

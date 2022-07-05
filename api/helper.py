@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import pandas as pd
 import torch
-import transformers
+# import transformersm
 from fairseq.data import Dictionary
 from fairseq.data.encoders.fastbpe import fastBPE
 # from keras.preprocessing.sequence import pad_sequences
@@ -169,8 +169,8 @@ def text2output(text, vocab):
 
 final_result = text2output(sys.argv[1], vocab)
 # print(final_result)
-f = open("data/first_text.txt", "w")
+f = open("data/first_text.txt", "w", newline='')
 f.write(sys.argv[1])
-f = open("data/final_result.txt", "w")
+f = open("data/final_result.txt", "w", encoding='utf-8')
 f.write(' '.join([str(item) for item in final_result]))
 f.close()

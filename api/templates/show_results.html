@@ -12,12 +12,13 @@
     height="480"
   /> -->
   <p>{{result.first_text}}</p>
-  <p>{{result.result}}</p>
+  <p>{{result.result.0}}</p>
+  <div id="pretty_show" class="inline-block">{{result.result.0}}</div>
 </div>
 
 <hr />
 {% endfor %}
-<!-- 
+
 <script>
   function download(filename, text) {
     var element = document.createElement("a");
@@ -34,6 +35,97 @@
 
     document.body.removeChild(element);
   }
-</script> -->
+
+  const list_color = ['red', 'orange', 'yellow', 'green', 'blue', 'lime', 'brown']
+
+  function block_pretty(pretty_element, text, color) {
+    var element = document.createElement("div");
+    element.style.backgroundColor = color
+    element.style.display = 'inline-block'
+    element.style.marginLeft = '5px'
+    element.style.paddingLeft = '5px'
+    element.style.paddingRight = '5px'
+    element.style.paddingTop = '3px'
+    element.style.paddingBottom = '3px'
+    element.style.borderRadius = '10px'
+    // element.setAttribute('background-color', color);
+    element.innerHTML = text
+    pretty_element.appendChild(element)
+  }
+
+  function pretty_show() {
+    var pretty_element = document.getElementById('pretty_show')
+    var string = pretty_element.innerHTML
+    var result = string.split(' ')
+    pretty_element.innerHTML = ''
+    for (let rs of result) {
+      let [text, type] = rs.split('-');
+      switch (type) {
+        case 'O': {
+          block_pretty(pretty_element, text, 'brown')
+          break
+        }
+        case 'X': {
+          block_pretty(pretty_element, text, 'red')
+          break
+        }
+        case 'PATIENT_ID': {
+          block_pretty(pretty_element, text, 'green')
+          break
+        }
+        case 'PERSON_NAME': {
+          block_pretty(pretty_element, text, 'orange')
+          break
+        }
+        case 'AGE': {
+          block_pretty(pretty_element, text, 'lime')
+          break
+        }
+        case 'GENDER': {
+          block_pretty(pretty_element, text, 'cyan')
+          break
+        }
+        case 'OCCUPATION': {
+          block_pretty(pretty_element, text, 'yellow')
+          break
+        }
+        case 'LOCATION': {
+          block_pretty(pretty_element, text, 'blue')
+          break
+        }
+        case 'ORGANIZATION': {
+          block_pretty(pretty_element, text, 'silver')
+          break
+        }
+        case 'DISEASE': {
+          block_pretty(pretty_element, text, 'darkblue')
+          break
+        }
+        case 'TRANSPORTATION': {
+          block_pretty(pretty_element, text, 'gray')
+          break
+        }
+        case 'DATE': {
+          block_pretty(pretty_element, text, 'pink')
+          break
+        }
+
+      }
+    }
+  }
+
+  document.onload = pretty_show()
+
+  // function draw() {
+  //   console.log('Drawed! ' + $(this).attr('id'));
+  // }
+
+  // $(document).ready(function () {
+  //   $('div.slot').each(function (i, d) {
+  //     console.log('slot found: ' + d.id);
+  //     draw.call($(this));
+  //   });
+  // });
+</script>
 
 {% endblock %}

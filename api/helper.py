@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import pandas as pd
 import torch
-import transformers
+# import transformersm
 from fairseq.data import Dictionary
 from fairseq.data.encoders.fastbpe import fastBPE
 # from keras.preprocessing.sequence import pad_sequences
@@ -167,7 +167,6 @@ def text2output(text, vocab):
     return list(zip(subwords_test[0].split(), pred))
     # return subwords_test[0].split(), pred
 
-
 bang_nguyen_am = [['a', 'à', 'á', 'ả', 'ã', 'ạ', 'a'],
                   ['ă', 'ằ', 'ắ', 'ẳ', 'ẵ', 'ặ', 'aw'],
                   ['â', 'ầ', 'ấ', 'ẩ', 'ẫ', 'ậ', 'aa'],
@@ -313,3 +312,4 @@ print(final_result)
 # f = open("data/final_result.txt", "w")
 # f.write(' '.join([str(item) for item in final_result]))
 # f.close()
+

@@ -47,7 +47,7 @@ async def detect_via_web_form(request: Request,
     # rc = subprocess.call(
     #     ["/home/hoang/Desktop/NLP-Ner/api/call_helper.sh", textupload], shell=True)
     # print("Text up load: ", textupload)
-    os.system(f'bash /home/hoang/Desktop/NLP-Ner/api/call_helper.sh \"{textupload}\"')
+    os.system(f'bash /home/hoang/Desktop/NLP_CovidNer/api/call_helper.sh \"{textupload}\"')
     first_text = open("data/first_text.txt", "r", encoding='utf-8')
     # first_text = textupload
     final_result = open("data/final_result.txt", "r")

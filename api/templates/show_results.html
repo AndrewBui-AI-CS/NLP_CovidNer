@@ -12,7 +12,7 @@
     height="480"
   /> -->
   <p>{{result.first_text}}</p>
-  <p>{{result.result.0}}</p>
+  <!-- <p>{{result.result.0}}</p> -->
   <div id="pretty_show" class="inline-block">{{result.result.0}}</div>
 </div>
 
@@ -38,17 +38,22 @@
 
   const list_color = ['red', 'orange', 'yellow', 'green', 'blue', 'lime', 'brown']
 
-  function block_pretty(pretty_element, text, color) {
+  function block_pretty(pretty_element, text, color, label) {
     var element = document.createElement("div");
-    element.style.backgroundColor = color
     element.style.display = 'inline-block'
+    var text_element = document.createElement("div");
+    var label_element = document.createElement("div");
+    text_element.style.backgroundColor = color
+    text_element.style.paddingLeft = '8px'
+    text_element.style.paddingRight = '8px'
+    text_element.style.paddingTop = '3px'
+    text_element.style.paddingBottom = '3px'
+    text_element.style.borderRadius = '12px'
+    text_element.innerHTML = text
+    label_element.innerHTML = label
     element.style.marginLeft = '10px'
-    element.style.paddingLeft = '8px'
-    element.style.paddingRight = '8px'
-    element.style.paddingTop = '3px'
-    element.style.paddingBottom = '3px'
-    element.style.borderRadius = '12px'
-    element.innerHTML = text
+    element.appendChild(text_element)
+    element.appendChild(label_element)
     pretty_element.appendChild(element)
   }
 
@@ -58,145 +63,143 @@
     var result = string.split(' ')
     pretty_element.innerHTML = ''
     for (let rs of result) {
-      let [text, type] = rs.split('-');
-      switch (type) {
+      let [text, label] = rs.split('-');
+      switch (label) {
         case 'O': {
-          block_pretty(pretty_element, text, 'brown')
+          block_pretty(pretty_element, text, 'brown', label)
           break
         }
         case 'X': {
-          block_pretty(pretty_element, text, 'red')
-          break
-        }
-        case 'B-X': {
-          block_pretty(pretty_element, text, 'red')
-          break
-        }
-        case 'I-X': {
-          block_pretty(pretty_element, text, 'scarlet')
+          block_pretty(pretty_element, text, 'magenta', label)
           break
         }
         case 'PATIENT_ID': {
-          block_pretty(pretty_element, text, 'green')
+          block_pretty(pretty_element, text, 'green', label)
           break
         }
         case 'B-PATIENT_ID': {
-          block_pretty(pretty_element, text, 'green')
+          block_pretty(pretty_element, text, 'green', label)
           break
         }
         case 'I-PATIENT_ID': {
-          block_pretty(pretty_element, text, 'lime')
+          block_pretty(pretty_element, text, 'lime', label)
           break
         }
         case 'PERSON_NAME': {
-          block_pretty(pretty_element, text, 'orange')
+          block_pretty(pretty_element, text, 'orange', label)
           break
         }
         case 'B-PERSON_NAME': {
-          block_pretty(pretty_element, text, 'orange')
+          block_pretty(pretty_element, text, 'orange', label)
           break
         }
         case 'I-PERSON_NAME': {
-          block_pretty(pretty_element, text, 'yellow')
+          block_pretty(pretty_element, text, 'yellow', label)
           break
         }
         case 'AGE': {
-          block_pretty(pretty_element, text, 'maroon')
+          block_pretty(pretty_element, text, 'maroon', label)
           break
         }
         case 'B-AGE': {
-          block_pretty(pretty_element, text, 'maroon')
+          block_pretty(pretty_element, text, 'maroon', label)
           break
         }
         case 'I-AGE': {
-          block_pretty(pretty_element, text, 'brown')
+          block_pretty(pretty_element, text, 'brown', label)
           break
         }
         case 'GENDER': {
-          block_pretty(pretty_element, text, 'cyan')
+          block_pretty(pretty_element, text, 'cyan', label)
           break
         }
         case 'B-GENDER': {
-          block_pretty(pretty_element, text, 'cyan')
+          block_pretty(pretty_element, text, 'cyan', label)
           break
         }
         case 'I-GENDER': {
-          block_pretty(pretty_element, text, 'electricblue')
+          /// electric blue
+          block_pretty(pretty_element, text, '#9AFEFF', label)
           break
         }
         case 'OCCUPATION': {
-          block_pretty(pretty_element, text, 'plumpie')
+          /// plum pie
+          block_pretty(pretty_element, text, '#7D0541', label)
           break
         }
         case 'B-OCCUPATION': {
-          block_pretty(pretty_element, text, 'plumpie')
+          block_pretty(pretty_element, text, '#7D0541', label)
           break
         }
         case 'I-OCCUPATION': {
-          block_pretty(pretty_element, text, 'plumvelvet')
+          /// plum velet
+          block_pretty(pretty_element, text, '#7D0552', label)
         }
         case 'LOCATION': {
-          block_pretty(pretty_element, text, 'blue')
+          block_pretty(pretty_element, text, 'blue', label)
           break
         }
         case 'B-LOCATION': {
-          block_pretty(pretty_element, text, 'blue')
+          block_pretty(pretty_element, text, 'blue', label)
           break
         }
         case 'I-LOCATION': {
-          block_pretty(pretty_element, text, 'lightblue')
+          block_pretty(pretty_element, text, 'lightblue', label)
           break
         }
         case 'ORGANIZATION': {
-          block_pretty(pretty_element, text, 'gray')
+          block_pretty(pretty_element, text, 'gray', label)
           break
         }
         case 'B-ORGANIZATION': {
-          block_pretty(pretty_element, text, 'gray')
+          block_pretty(pretty_element, text, 'gray', label)
           break
         }
         case 'I-ORGANIZATION': {
-          block_pretty(pretty_element, text, 'silver')
+          block_pretty(pretty_element, text, 'silver', label)
           break
         }
-        case 'DISEASE': {
-          block_pretty(pretty_element, text, 'nightblue')
+        case 'SYMPTOM_AND_DISEASE': {
+          /// night blue
+          block_pretty(pretty_element, text, '#191970', label)
           break
         }
-        case 'B-DISEASE': {
-          block_pretty(pretty_element, text, 'nightblue')
+        case 'B-SYMPTOM_AND_DISEASE': {
+          block_pretty(pretty_element, text, '#191970', label)
           break
         }
-        case 'I-DISEASE': {
-          block_pretty(pretty_element, text, 'darkblue')
+        case 'I-SYMPTOM_AND_DISEASE': {
+          block_pretty(pretty_element, text, 'darkblue', label)
           break
         }
         case 'TRANSPORTATION': {
-          block_pretty(pretty_element, text, 'lovelypurple')
+          /// lovely purple
+          block_pretty(pretty_element, text, '#7F38EC', label)
           break
         }
         case 'B-TRANSPORTATION': {
-          block_pretty(pretty_element, text, 'lovelypurple')
+          block_pretty(pretty_element, text, '#7F38EC', label)
           break
         }
         case 'I-TRANSPORTATION': {
-          block_pretty(pretty_element, text, 'neonpurple')
+          /// neon purple
+          block_pretty(pretty_element, text, '#9D00FF', label)
           break
         }
         case 'DATE': {
-          block_pretty(pretty_element, text, 'magenta')
+          block_pretty(pretty_element, text, 'magenta', label)
           break
         }
         case 'B-DATE': {
-          block_pretty(pretty_element, text, 'magenta')
+          block_pretty(pretty_element, text, 'magenta', label)
           break
         }
         case 'I-DATE': {
-          block_pretty(pretty_element, text, 'pink')
+          block_pretty(pretty_element, text, 'pink', label)
           break
         }
         default: {
-          block_pretty(pretty_element, text, 'white')
+          block_pretty(pretty_element, text, 'white', label)
         }
 
       }

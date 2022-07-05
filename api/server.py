@@ -48,14 +48,15 @@ async def detect_via_web_form(request: Request,
     #     ["/home/hoang/Desktop/NLP-Ner/api/call_helper.sh", textupload], shell=True)
     # print("Text up load: ", textupload)
     os.system(f'bash /home/hoang/Desktop/NLP-Ner/api/call_helper.sh \"{textupload}\"')
-    first_text = open("data/first_text.txt", "r", encoding='utf-8')
-    # first_text = textupload
+    # first_text = open("data/first_text.txt", "r", encoding='utf-8')
+    first_text = textupload
     final_result = open("data/final_result.txt", "r")
-    result = [{"first_text": first_text.read(), 
+    result = [{"first_text": first_text, 
                "result": final_result.readlines()}]
     
     for i in range(len(result[0]['result'])):
         result[0]['result'][i] = format_result(result[0]['result'][i])
+    final_result.close()
     if model_name == 'bert-based':
         return templates.TemplateResponse('show_results.html', {
             'request': request,

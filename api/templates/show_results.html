@@ -42,13 +42,12 @@
     var element = document.createElement("div");
     element.style.backgroundColor = color
     element.style.display = 'inline-block'
-    element.style.marginLeft = '5px'
-    element.style.paddingLeft = '5px'
-    element.style.paddingRight = '5px'
+    element.style.marginLeft = '10px'
+    element.style.paddingLeft = '8px'
+    element.style.paddingRight = '8px'
     element.style.paddingTop = '3px'
     element.style.paddingBottom = '3px'
-    element.style.borderRadius = '10px'
-    // element.setAttribute('background-color', color);
+    element.style.borderRadius = '12px'
     element.innerHTML = text
     pretty_element.appendChild(element)
   }
@@ -69,45 +68,135 @@
           block_pretty(pretty_element, text, 'red')
           break
         }
+        case 'B-X': {
+          block_pretty(pretty_element, text, 'red')
+          break
+        }
+        case 'I-X': {
+          block_pretty(pretty_element, text, 'scarlet')
+          break
+        }
         case 'PATIENT_ID': {
           block_pretty(pretty_element, text, 'green')
+          break
+        }
+        case 'B-PATIENT_ID': {
+          block_pretty(pretty_element, text, 'green')
+          break
+        }
+        case 'I-PATIENT_ID': {
+          block_pretty(pretty_element, text, 'lime')
           break
         }
         case 'PERSON_NAME': {
           block_pretty(pretty_element, text, 'orange')
           break
         }
+        case 'B-PERSON_NAME': {
+          block_pretty(pretty_element, text, 'orange')
+          break
+        }
+        case 'I-PERSON_NAME': {
+          block_pretty(pretty_element, text, 'yellow')
+          break
+        }
         case 'AGE': {
-          block_pretty(pretty_element, text, 'lime')
+          block_pretty(pretty_element, text, 'maroon')
+          break
+        }
+        case 'B-AGE': {
+          block_pretty(pretty_element, text, 'maroon')
+          break
+        }
+        case 'I-AGE': {
+          block_pretty(pretty_element, text, 'brown')
           break
         }
         case 'GENDER': {
           block_pretty(pretty_element, text, 'cyan')
           break
         }
-        case 'OCCUPATION': {
-          block_pretty(pretty_element, text, 'yellow')
+        case 'B-GENDER': {
+          block_pretty(pretty_element, text, 'cyan')
           break
+        }
+        case 'I-GENDER': {
+          block_pretty(pretty_element, text, 'electricblue')
+          break
+        }
+        case 'OCCUPATION': {
+          block_pretty(pretty_element, text, 'plumpie')
+          break
+        }
+        case 'B-OCCUPATION': {
+          block_pretty(pretty_element, text, 'plumpie')
+          break
+        }
+        case 'I-OCCUPATION': {
+          block_pretty(pretty_element, text, 'plumvelvet')
         }
         case 'LOCATION': {
           block_pretty(pretty_element, text, 'blue')
           break
         }
+        case 'B-LOCATION': {
+          block_pretty(pretty_element, text, 'blue')
+          break
+        }
+        case 'I-LOCATION': {
+          block_pretty(pretty_element, text, 'lightblue')
+          break
+        }
         case 'ORGANIZATION': {
+          block_pretty(pretty_element, text, 'gray')
+          break
+        }
+        case 'B-ORGANIZATION': {
+          block_pretty(pretty_element, text, 'gray')
+          break
+        }
+        case 'I-ORGANIZATION': {
           block_pretty(pretty_element, text, 'silver')
           break
         }
         case 'DISEASE': {
+          block_pretty(pretty_element, text, 'nightblue')
+          break
+        }
+        case 'B-DISEASE': {
+          block_pretty(pretty_element, text, 'nightblue')
+          break
+        }
+        case 'I-DISEASE': {
           block_pretty(pretty_element, text, 'darkblue')
           break
         }
         case 'TRANSPORTATION': {
-          block_pretty(pretty_element, text, 'gray')
+          block_pretty(pretty_element, text, 'lovelypurple')
+          break
+        }
+        case 'B-TRANSPORTATION': {
+          block_pretty(pretty_element, text, 'lovelypurple')
+          break
+        }
+        case 'I-TRANSPORTATION': {
+          block_pretty(pretty_element, text, 'neonpurple')
           break
         }
         case 'DATE': {
+          block_pretty(pretty_element, text, 'magenta')
+          break
+        }
+        case 'B-DATE': {
+          block_pretty(pretty_element, text, 'magenta')
+          break
+        }
+        case 'I-DATE': {
           block_pretty(pretty_element, text, 'pink')
           break
+        }
+        default: {
+          block_pretty(pretty_element, text, 'white')
         }
 
       }

@@ -28,7 +28,7 @@ def home(request: Request):
     
 def format_result(string):
     split_string = string.split(') (')[1: -1]
-    format_string = ' '.join(list(map(lambda x: x.replace(', ', '-').replace("'", ''), split_string)))
+    format_string = ' '.join(list(map(lambda x: x.replace(', ', '_').replace("'", ''), split_string)))
     # return list(map(lambda x: list(map(lambda y: str(y).replace("'", ''), x.split(', '))), split_string))
     return format_string
 
@@ -52,7 +52,7 @@ async def detect_via_web_form(request: Request,
     first_text = open("data/first_text.txt", "r", encoding='utf-8')
     # first_text = textupload
     final_result = open("data/final_result.txt", "r")
-    result = [{"first_text": first_text, 
+    result = [{"first_text": first_text.read(), 
                "result": final_result.readlines()}]
     
     for i in range(len(result[0]['result'])):

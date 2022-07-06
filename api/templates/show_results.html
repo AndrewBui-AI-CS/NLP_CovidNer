@@ -52,6 +52,7 @@
     text_element.innerHTML = text
     label_element.innerHTML = label
     element.style.marginLeft = '10px'
+    element.style.marginTop = '8px'
     element.appendChild(text_element)
     element.appendChild(label_element)
     pretty_element.appendChild(element)
@@ -63,10 +64,12 @@
     var result = string.split(' ')
     pretty_element.innerHTML = ''
     for (let rs of result) {
-      let [text, label] = rs.split('-');
+      console.log("result : ", rs);
+      let [text, label] = rs.split('_');
+      console.log("text, label: ", text, label);
       switch (label) {
         case 'O': {
-          block_pretty(pretty_element, text, 'brown', label)
+          block_pretty(pretty_element, text, 'white', label)
           break
         }
         case 'X': {
@@ -82,19 +85,19 @@
           break
         }
         case 'I-PATIENT_ID': {
-          block_pretty(pretty_element, text, 'lime', label)
+          block_pretty(pretty_element, text, 'green', label)
           break
         }
         case 'PERSON_NAME': {
           block_pretty(pretty_element, text, 'orange', label)
           break
         }
-        case 'B-PERSON_NAME': {
+        case 'B-NAME': {
           block_pretty(pretty_element, text, 'orange', label)
           break
         }
-        case 'I-PERSON_NAME': {
-          block_pretty(pretty_element, text, 'yellow', label)
+        case 'I-NAME': {
+          block_pretty(pretty_element, text, 'orange', label)
           break
         }
         case 'AGE': {
@@ -106,7 +109,7 @@
           break
         }
         case 'I-AGE': {
-          block_pretty(pretty_element, text, 'brown', label)
+          block_pretty(pretty_element, text, 'maroon', label)
           break
         }
         case 'GENDER': {
@@ -119,7 +122,7 @@
         }
         case 'I-GENDER': {
           /// electric blue
-          block_pretty(pretty_element, text, '#9AFEFF', label)
+          block_pretty(pretty_element, text, 'cyan', label)
           break
         }
         case 'OCCUPATION': {
@@ -133,7 +136,7 @@
         }
         case 'I-OCCUPATION': {
           /// plum velet
-          block_pretty(pretty_element, text, '#7D0552', label)
+          block_pretty(pretty_element, text, '#7D0541', label)
         }
         case 'LOCATION': {
           block_pretty(pretty_element, text, 'blue', label)
@@ -144,7 +147,7 @@
           break
         }
         case 'I-LOCATION': {
-          block_pretty(pretty_element, text, 'lightblue', label)
+          block_pretty(pretty_element, text, 'blue', label)
           break
         }
         case 'ORGANIZATION': {
@@ -156,16 +159,16 @@
           break
         }
         case 'I-ORGANIZATION': {
-          block_pretty(pretty_element, text, 'silver', label)
+          block_pretty(pretty_element, text, 'gray', label)
           break
         }
         case 'SYMPTOM_AND_DISEASE': {
           /// night blue
-          block_pretty(pretty_element, text, '#191970', label)
+          block_pretty(pretty_element, text, 'darkblue', label)
           break
         }
         case 'B-SYMPTOM_AND_DISEASE': {
-          block_pretty(pretty_element, text, '#191970', label)
+          block_pretty(pretty_element, text, 'darkblue', label)
           break
         }
         case 'I-SYMPTOM_AND_DISEASE': {
@@ -183,19 +186,27 @@
         }
         case 'I-TRANSPORTATION': {
           /// neon purple
-          block_pretty(pretty_element, text, '#9D00FF', label)
+          block_pretty(pretty_element, text, '#7F38EC', label)
           break
         }
         case 'DATE': {
-          block_pretty(pretty_element, text, 'magenta', label)
+          block_pretty(pretty_element, text, 'purple', label)
           break
         }
         case 'B-DATE': {
-          block_pretty(pretty_element, text, 'magenta', label)
+          block_pretty(pretty_element, text, 'purple', label)
           break
         }
         case 'I-DATE': {
-          block_pretty(pretty_element, text, 'pink', label)
+          block_pretty(pretty_element, text, 'purple', label)
+          break
+        }
+        case 'B-JOB': {
+          block_pretty(pretty_element, text, 'yellow', label)
+          break
+        }
+        case 'I-JOB': {
+          block_pretty(pretty_element, text, 'yellow', label)
           break
         }
         default: {
